@@ -1,0 +1,68 @@
+﻿@model List<ImovelGo.Web.Models.ReviewViewModel>
+<!-- ============================ Smart Testimonials ================================== -->
+<section class="image-cover pb-0" style="background:#122947 url(assets/img/pattern.png) no-repeat;">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-6 col-md-7">
+                <h2 class="text-light">O que andam falando?</h2>
+
+                <div class="smart-textimonials smart-light" id="smart-textimonials-big">
+
+                    @foreach (var item in Model)
+                    {
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="smart-tes-content">
+                                <p>@item.Description</p>
+                            </div>
+
+                            <div class="smart-tes-author">
+                                <div class="st-author-box">
+                                    <div class="st-author-thumb">
+                                        <img src="@item.Avatar" class="img-fluid" alt="" />
+                                    </div>
+                                    <div class="st-author-info">
+                                        <h4 class="st-author-title">@item.Name</h4>
+                                        <span class="st-author-subtitle">@item.Title</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-5">
+                <img src="~/img/avatar-large-1.png" class="img-fluid" alt="">
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ============================ Smart Testimonials End ================================== -->
+<script type="text/javascript">
+$('#smart-textimonials-big').slick({
+	slidesToShow:1,
+	arrows: false,
+	autoplay:true,
+	responsive: [
+	{
+		breakpoint: 768,
+		settings: {
+		arrows: false,
+		slidesToShow:1
+		}
+	},
+	{
+		breakpoint: 480,
+		settings: {
+		arrows: false,
+		slidesToShow:1
+		}
+	}
+	]
+});
+</script>

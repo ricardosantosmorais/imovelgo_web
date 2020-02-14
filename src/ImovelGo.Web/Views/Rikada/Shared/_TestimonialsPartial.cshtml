@@ -1,0 +1,79 @@
+﻿@model List<ImovelGo.Web.Models.ReviewViewModel>
+<!-- ============================ Testimonials ================================== -->
+<section>
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-lg-5 col-md-5">
+
+                <div class="sec-heading">
+                    <h2>O que andam falando?</h2>
+                    <p>Veja as opiniões dos nossos clientes.</p>
+                    <a href="#" class="btn btn-theme-2 mt-3">Veja mais comentários</a>
+                </div>
+
+            </div>
+
+            <div class="col-lg-7 col-md-7">
+                <div class="testi-slide item-slide">
+
+                    @foreach (var item in Model)
+                    {
+                        <!-- Single Testimonial -->
+                        <div class="single-items">
+                            <div class="testimonial-wrap">
+
+                                <div class="client-thumb-box">
+                                    <div class="client-thumb-content">
+                                        <div class="client-thumb">
+                                            <img src="@item.Avatar" class="img-responsive img-circle" alt="">
+                                        </div>
+                                        <div class="client-info">
+                                            <h5 class="mb-0">@item.Name</h5>
+                                            <span class="small-font">@item.Title</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p>@item.Description</p>
+
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ============================ Testimonials End ================================== -->
+<script type="text/javascript">$('.testi-slide').slick({
+        slidesToShow: 2,
+        arrows: false,
+        autoplay: true,
+        responsive: [
+            {
+                breakpoint: 1023,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });</script>

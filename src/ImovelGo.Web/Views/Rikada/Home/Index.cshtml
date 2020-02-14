@@ -1,0 +1,29 @@
+﻿@model ImovelGo.Web.Models.CompanyViewModel
+@using ImovelGo.Web.Controllers
+@using System.Web
+@{
+    Layout = "~/Views/Rikada/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Home Page";
+    var currentPage = HomeController.currentPage;
+}
+			
+			
+@{
+    foreach(var area in currentPage.Areas)
+    {
+        <div class="partialContents" data-url="@area.Path" data-parameter="@System.Web.HttpUtility.UrlEncode(area.File)"></div>
+    }
+}												
+			
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $('.partialContents').each(function (index, item) {
+                var url = $(item).data('url');
+                var param = $(item).data('parameter')
+                $(item).load(url + "?view=" + param);
+            })
+        });
+    </script>
+}

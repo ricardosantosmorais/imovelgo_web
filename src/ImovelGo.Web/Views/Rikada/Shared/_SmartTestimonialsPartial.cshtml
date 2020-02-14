@@ -1,0 +1,61 @@
+﻿@model List<ImovelGo.Web.Models.ReviewViewModel>
+<!-- ============================ Smart Testimonials ================================== -->
+<section class="image-cover" style="background:url(img/tour-6.jpg) no-repeat;" data-overlay="8">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8 col-md-8">
+
+                <div class="smart-textimonials smart-light smart-center" id="smart-textimonials">
+
+                    @foreach (var item in Model)
+                    {
+                        <!-- Single Item -->
+                        <div class="item">
+                            <div class="smart-tes-content">
+                                <p>@item.Description</p>
+                            </div>
+
+                            <div class="smart-tes-author">
+                                <div class="st-author-box">
+                                    <div class="st-author-thumb">
+                                        <img src="@item.Avatar" class="img-fluid" alt="" />
+                                    </div>
+                                    <div class="st-author-info">
+                                        <h4 class="st-author-title">@item.Name</h4>
+                                        <span class="st-author-subtitle">@item.Title</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ============================ Smart Testimonials End ================================== -->
+<script type="text/javascript">$('.smart-textimonials').slick({
+        slidesToShow: 1,
+        arrows: false,
+        autoplay: true,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    slidesToShow: 1
+                }
+            }
+        ]
+    });</script>

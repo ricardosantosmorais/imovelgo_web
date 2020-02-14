@@ -1,0 +1,67 @@
+﻿@model ImovelGo.Web.Models.CompanyViewModel
+<!-- ============================ Agent Start ================================== -->
+<section class="gray-bg">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="sec-heading center">
+                    <h2>Nossos agentes</h2>
+                    <p>Encontraremos seu novo lar.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            @foreach (var item in Model.Agents)
+            {
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="freelancer-detail.html">
+                                    <div class="overall-rate">4.4</div>
+                                    <img src="@item.Avatar" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="#">@item.FistName @item.LastName</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>@Model.MainAddress.Street, @Model.MainAddress.Number</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Transações<span>306</span></li>
+                                <li>E-mail<span>@item.Email</span></li>
+                                <li>Telefone<span>@item.DDDCellPhone @item.CellPhone</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="/Agent/@item.AccountId" class="btn btn-outline-theme full-width">Ver perfil<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+</section>
+<!-- ============================ Agent End ================================== -->

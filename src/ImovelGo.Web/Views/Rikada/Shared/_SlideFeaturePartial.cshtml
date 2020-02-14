@@ -1,0 +1,111 @@
+﻿@model List<ImovelGo.Web.Models.PropertyViewModel>
+<!-- ============================ Slide Property Start ================================== -->
+<section class="gray-bg">
+<div class="container">
+				
+<div class="row">
+<div class="col-lg-12 col-md-12">
+	<div class="sec-heading center">
+		<h2>Destaques</h2>
+		<p>Imóveis parar comprar e alugar</p>
+	</div>
+</div>
+</div>
+					
+<div class="row">
+<div class="col-lg-12 col-md-12">
+    <div class="property-slide">
+        @foreach (var property in Model)
+        {
+            <!-- Single Property -->
+            <div class="single-items">
+                <div class="property-listing property-2">
+
+                    <div class="listing-img-wrapper">
+                        <div class="list-img-slide">
+                            <div class="click">
+                                @foreach (var photo in property.Photos)
+                                {
+                                    <div><a href="/Property/@property.Id"><img src="@photo.Path" class="img-fluid mx-auto" alt="" /></a></div>
+                                }
+                            </div>
+                        </div>
+                        <span class="property-type">@property.Goal</span>
+                    </div>
+
+                    <div class="listing-detail-wrapper pb-0">
+                        <div class="listing-short-detail">
+                            <h4 class="listing-name"><a href="/Property/@property.Id">@property.Title</a><i class="list-status ti-check"></i></h4>
+                        </div>
+                    </div>
+
+                    <div class="price-features-wrapper">
+                        <div class="listing-price-fx">
+                            @if (property.GoalId == 1)
+                            {
+                                <h6 class="listing-card-info-price price-prefix">@property.FinalPrice<span class="price-suffix">/mês</span></h6>
+                            }
+                            else
+                            {
+                                <h6 class="listing-card-info-price price-prefix">@property.FinalPrice</h6>
+                            }
+                        </div>
+                        <div class="list-fx-features">
+                            <div class="listing-card-info-icon">
+                                <span class="inc-fleat inc-bed">@property.Bedroom Quartos</span>
+                            </div>
+                            <div class="listing-card-info-icon">
+                                <span class="inc-fleat inc-bath">@property.BathRoom Banheiro</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+</div>
+					
+<div class="row">
+<div class="col-lg-12 col-md-12">
+	<div class="text-center mt-4">
+		<a href="#" class="btn btn-theme-2">Veja mais imóveis</a>
+	</div>
+</div>
+</div>
+					
+</div>
+</section>
+<!-- ============================ Slide Property End ================================== -->
+<script type="text/javascript">
+$('.property-slide').slick({
+	slidesToShow:3,
+	arrows: false,
+	autoplay:true,
+	responsive: [
+	{
+		breakpoint: 1024,
+		settings: {
+		arrows: false,
+		slidesToShow:2
+		}
+	},
+	{
+		breakpoint: 600,
+		settings: {
+		arrows: false,
+		slidesToShow:1
+		}
+	}
+	]
+});
+$('.click').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: false,
+    autoplaySpeed: 2000,
+});
+
+</script>

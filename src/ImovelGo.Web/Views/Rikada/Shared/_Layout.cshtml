@@ -1,0 +1,439 @@
+﻿@model ImovelGo.Web.Models.CompanyViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>@ViewData["Title"] - ImovelGo</title>
+
+    <!-- All Plugins Css -->
+    <link rel="stylesheet" href="~/css/plugins.css">
+    <link rel="stylesheet" href="~/css/nav.css" />
+    <link rel="stylesheet" href="~/css/notyf.min.css" />
+
+
+    <!-- Custom CSS -->
+    <link href="~/css/styles.css" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet">
+
+    <!-- Custom Color Option -->
+    <link href="~/css/colors.css" rel="stylesheet">
+
+</head>
+	
+<body class="green-skin">
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div id="preloader" style="display:none"><div class="preloader"><span></span><span></span></div></div>
+
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+
+        <!-- ============================================================== -->
+        <!-- Top header  -->
+        <!-- ============================================================== -->
+        <!-- Start Navigation -->
+        <div class="top-header">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="cn-info">
+                            <ul>
+                                <li><i class="lni-phone-handset"></i>@Model.Telephone</li>
+                                <li><i class="ti-email"></i>@Model.Email</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <ul class="top-social">
+                            @{
+                                if (!String.IsNullOrEmpty(Model.Facebook))
+                                {
+                                    <li><a href="@Model.Facebook" target="_blank"><i class="lni-facebook"></i></a></li>
+                                }
+                            }
+                            @{
+                                if (!String.IsNullOrEmpty(Model.Linkedin))
+                                {
+                                    <li><a href="@Model.Linkedin" target="_blank"><i class="lni-linkedin"></i></a></li>
+                                }
+                            }
+                            @{
+                                if (!String.IsNullOrEmpty(Model.Instagram))
+                                {
+                                    <li><a href="@Model.Instagram" target="_blank"><i class="lni-instagram"></i></a></li>
+                                }
+                            }
+                            @{
+                                if (!String.IsNullOrEmpty(Model.Twitter))
+                                {
+                                    <li><a href="@Model.Twitter" target="_blank"><i class="lni-twitter"></i></a></li>
+                                }
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="header header-light nav-left-side">
+            <nav class="headnavbar">
+                <div class="nav-header">
+                    <a href="#" class="brand"><img src="@Model.Logo" alt="@Model.Name" /></a>
+                    <button class="toggle-bar"><span class="ti-align-justify"></span></button>
+                </div>
+                <ul class="menu">
+
+                    <li class="">
+                        <a class="active" href="/Home/Index">Home</a>
+                    </li>
+
+                    <li class="">
+                        <a href="/Home/About">Sobre a gente</a>
+                    </li>
+
+                    <li class="">
+                        <a href="/Home/Buy">Comprar</a>
+                    </li>
+
+                    <li class="">
+                        <a href="/Home/Rent">Alugar</a>
+                    </li>
+
+                </ul>
+
+                <ul class="attributes attributes-desk">
+                    <li class="log-icon log-seprate"><a href="#" data-toggle="modal" data-target="#login">Sua conta</a></li>
+                    <li class="log-icon"><a href="#" data-toggle="modal" data-target="#signup">Cadastre-se</a></li>
+                    <li class="submit-attri theme-log"><a href="/Publish/Index">Anuncie seu imóvel</a></li>
+                </ul>
+
+            </nav>
+        </div>
+        <!-- End Navigation -->
+
+        @RenderBody()
+
+
+        <!-- ============================ Footer Start ================================== -->
+        <footer class="dark-footer skin-dark-footer">
+            <div>
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <h4 class="widget-title">@Model.Name</h4>
+                                <p>@Model.MinDescription</p>
+                                @{
+                                    if (!String.IsNullOrEmpty(Model.GooglePlay))
+                                    {
+                                        <a href="#" class="other-store-link">
+                                            <div class="other-store-app">
+                                                <div class="os-app-icon">
+                                                    <i class="ti-android"></i>
+                                                </div>
+                                                <div class="os-app-caps">
+                                                    Baixar app
+                                                </div>
+                                            </div>
+                                        </a>
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <h4 class="widget-title">Atalhos</h4>
+                                <ul class="footer-menu">
+                                    <li><a href="/Home/About">Sobre a gente</a></li>
+                                    <li><a href="/Home/Faq">Dúvias</a></li>
+                                    <li><a href="/Home/Buy">Comprar</a></li>
+                                    <li><a href="/Home/Rent">Aluguar</a></li>
+                                    <li><a href="#" data-toggle="modal" data-target="#signup">Cadastre-se</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <h4 class="widget-title">Entre em contato</h4>
+                                <div class="fw-address-wrap">
+                                    <div class="fw fw-location">
+                                        @Model.MainAddress.AddressWithCity
+                                    </div>
+                                    <div class="fw fw-mail">
+                                        @Model.Email
+                                    </div>
+                                    <div class="fw fw-call">
+                                        @Model.Telephone
+                                    </div>
+                                    @{
+                                        if (!String.IsNullOrEmpty(Model.Skype))
+                                        {
+                                            <div class="fw fw-skype">
+                                                @Model.Skype
+                                            </div>
+                                        }
+                                    }
+                                    @{
+                                        if (!String.IsNullOrEmpty(Model.Domain))
+                                        {
+                                            <div class="fw fw-web">
+                                                @Model.Domain
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <h4 class="widget-title">Siga-nos</h4>
+                                <p>Siga a gente nas redes sociais e cadastre seu e-mail.</p>
+                                <ul class="footer-bottom-social">
+                                    @{
+                                        if (!String.IsNullOrEmpty(Model.Facebook))
+                                        {
+                                            <li><a href="@Model.Facebook"><i class="ti-facebook"></i></a></li>
+                                        }
+                                    }
+                                    @{
+                                        if (!String.IsNullOrEmpty(Model.Twitter))
+                                        {
+                                            <li><a href="@Model.Twitter"><i class="ti-twitter"></i></a></li>
+                                        }
+                                    }
+                                    @{
+                                        if (!String.IsNullOrEmpty(Model.Instagram))
+                                        {
+                                            <li><a href="@Model.Instagram"><i class="ti-instagram"></i></a></li>
+                                        }
+                                    }
+                                    @{
+                                        if (!String.IsNullOrEmpty(Model.Linkedin))
+                                        {
+                                            <li><a href="@Model.Linkedin"><i class="ti-linkedin"></i></a></li>
+                                        }
+                                    }
+                                </ul>
+
+                                <form class="f-newsletter mt-4">
+                                    <input type="email" class="form-control sigmup-me" placeholder="Digite seu e-mail" required="required">
+                                    <button type="submit" class="btn"><i class="ti-arrow-right"></i></button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row align-items-center">
+
+                        <div class="col-lg-12 col-md-12 text-center">
+                            <p class="mb-0">© 2019 @Model.Name. Todos os direitos reservados</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- ============================ Footer End ================================== -->
+        <!-- Log In Modal -->
+        <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
+                <div class="modal-content" id="registermodal">
+                    <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
+                    <div class="modal-body">
+                        <h4 class="modal-header-title">Entrar</h4>
+                        <div class="login-form">
+                            <form>
+
+                                <div class="form-group">
+                                    <label>E-mail</label>
+                                    <div class="input-with-icon">
+                                        <input type="email" class="form-control" placeholder="E-mail" id="login_email" name="input_email">
+                                        <i class="ti-user"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Senha</label>
+                                    <div class="input-with-icon">
+                                        <input type="password" class="form-control" placeholder="*******" id="login_password" name="input_password">
+                                        <i class="ti-unlock"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-md full-width pop-login" onclick="javascript:DoLogin(this)">Enviar</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-divider"><span>Ou</span></div>
+                        <div class="social-login mb-3">
+                            <ul>
+                                <li><a href="#" class="btn connect-fb"><i class="ti-facebook"></i>Facebook</a></li>
+                                <li><a href="#" class="btn connect-twitter"><i class="ti-twitter"></i>Twitter</a></li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <p class="mt-5"><a href="#" class="link">Esqueceu sua senha?</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+        <!-- Sign Up Modal -->
+        <div class="modal fade signup" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
+                <div class="modal-content" id="sign-up">
+                    <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
+                    <div class="modal-body">
+                        <h4 class="modal-header-title">Cadastre-se</h4>
+                        <div class="login-form">
+                            <form>
+
+                                <div class="row">
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-with-icon">
+                                                <input type="text" class="form-control" placeholder="Nome" id="signup_name">
+                                                <i class="ti-user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-with-icon">
+                                                <input type="text" class="form-control" placeholder="Sobrenome" id="signup_lastname">
+                                                <i class="ti-user"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-with-icon">
+                                                <input type="email" class="form-control" placeholder="E-mail" id="signup_email">
+                                                <i class="ti-email"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-with-icon">
+                                                <input type="password" class="form-control" placeholder="*******" id="signup_password">
+                                                <i class="ti-unlock"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-with-icon">
+                                                <input type="tel" class="form-control" placeholder="Celular" id="signup_cellphone">
+                                                <i class="lni-phone-handset"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-md full-width pop-login" onclick="javascript:DoRegister(this)">Enviar</button>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-divider"><span>Ou</span></div>
+                        <div class="social-login mb-3">
+                            <ul>
+                                <li><a href="#" class="btn connect-fb"><i class="ti-facebook"></i>Facebook</a></li>
+                                <li><a href="#" class="btn connect-twitter"><i class="ti-twitter"></i>Twitter</a></li>
+                            </ul>
+                        </div>
+                        <div class="text-center">
+                            <p class="mt-5"><i class="ti-user mr-1"></i>Já tem uma conta? <a href="#" class="link">Clique aqui</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+
+        <a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
+
+
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/coreNavigation.js"></script>
+    <script type="text/javascript">
+        $('nav.headnavbar').coreNavigation({
+            menuPosition: "right", // left, right, center, bottom
+            container: true, // true or false
+            animated: true,
+            animatedIn: 'flipInX',
+            animatedOut: 'bounceOut',
+            dropdownEvent: 'click', // Hover, Click & Accordion
+            onOpenDropdown: function () {
+                console.log('open');
+            },
+            onCloseDropdown: function () {
+                console.log('close');
+            },
+            onOpenMegaMenu: function () {
+                console.log('Open Megamenu');
+            },
+            onCloseMegaMenu: function () {
+                console.log('Close Megamenu');
+            }
+        });
+    </script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/rangeslider.js"></script>
+    <script src="~/js/select2.min.js"></script>
+    <script src="~/js/aos.js"></script>
+    <script src="~/js/owl.carousel.min.js"></script>
+    <script src="~/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/js/slick.js"></script>
+    <script src="~/js/slider-bg.js"></script>
+    <script src="~/js/lightbox.js"></script>
+    <script src="~/js/notyf.min.js"></script>
+    <script src="~/js/imagesloaded.js"></script>
+    <script src="~/js/isotope.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/site.js"></script>
+    @RenderSection("Scripts", required: false)
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+
+</body>
+</html>

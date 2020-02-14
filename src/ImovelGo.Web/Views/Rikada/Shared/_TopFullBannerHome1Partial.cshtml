@@ -1,0 +1,131 @@
+﻿@model ImovelGo.Web.Models.CompanyViewModel
+<div class="clearfix"></div>
+<!-- ============================================================== -->
+<!-- Top header  -->
+<!-- ============================================================== -->
+
+<!-- ============================ Hero Banner  Start================================== -->
+<div class="image-cover hero-banner" style="background:url(img/a.jpg) no-repeat;">
+	<div class="container">
+		<div class="hero-search-wrap">
+			<div class="hero-search">
+				<h1>Qual seu sonho?</h1>
+			</div>
+			<div class="hero-search-content">
+							
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="form-group">
+							<div class="input-with-icon">
+								<input type="text" class="form-control" placeholder="Onde você quer morar?">
+								<i class="ti-search"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+							
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="form-group">
+							<div class="input-with-icon">
+								<input type="text" class="form-control" placeholder="Valor mínimo">
+								<i class="ti-money"></i>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="form-group">
+							<div class="input-with-icon">
+								<input type="text" class="form-control" placeholder="Valor máximo">
+								<i class="ti-money"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+							
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="form-group">
+							<div class="input-with-icon">
+								<select id="bedrooms" class="form-control">
+									<option value="">&nbsp;</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+								<i class="fas fa-bed"></i>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="form-group">
+							<div class="input-with-icon">
+								<select id="bathrooms" class="form-control">
+									<option value="">&nbsp;</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+								<i class="fas fa-bath"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+							
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="form-group">
+							<div class="input-with-icon">
+								<select id="cities" class="form-control">
+									<option value="">&nbsp;</option>
+								</select>
+								<i class="ti-briefcase"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+							
+			</div>
+			<div class="hero-search-action">
+				<a href="#" class="btn search-btn">Buscar</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- ============================ Hero Banner End ================================== -->
+<script type="text/javascript">	
+	// Select Bedrooms
+	$('#bedrooms').select2({
+		placeholder: "Quartos",
+		allowClear: true
+	});
+	
+	// Select Bathrooms
+	$('#bathrooms').select2({
+		placeholder: "Banheiros",
+		allowClear: true
+    });
+
+    $.ajax({  
+           type: "GET",  
+           url: "/Common/LoadAllCities",  
+        success: function (data) {
+
+               for (var i = 0; i < data.length; i++) {  
+                   $('#cities').append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+               }  
+
+	            // Select Cities
+	            $('#cities').select2({
+		            placeholder: "Todas cidades",
+		            allowClear: true
+                });
+
+           }  
+       });  
+	
+</script>
